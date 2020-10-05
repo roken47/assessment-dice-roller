@@ -3,15 +3,16 @@ const userNumDice = document.querySelector("#usr-num-dice");
 const userNumSides = document.querySelector("#usr-num-sides");
 // Results
 const totalSpan = document.querySelector("#die-faces-sum");
-const rollResults = document.querySelector("#results");
+// const rollResults = document.querySelector("#results");
 let rollResultsList = [];
 // Buttons
-const rollButton = document.querySelector("#roll-button");
-const resultsButton = document.querySelector("#results-button");
-const resetButton = document.querySelector("#reset-button");
-// Roll Button Actions
-let incrementRoll = 0;
-rollButton.addEventListener("click", function () {
+// const rollButton = document.querySelector("#roll-button");
+// const resultsButton = document.querySelector("#results-button");
+// const resetButton = document.querySelector("#reset-button");
+// ---FUNCTIONS---
+// Roll Dice
+function rollUpOffMe() {
+  let incrementRoll = 0;
   let numDice = userNumDice.value;
   let numSides = userNumSides.value;
   if (numDice === null || numSides === null) {
@@ -30,14 +31,12 @@ rollButton.addEventListener("click", function () {
     console.log(actionRoll);
     rollResultsList.push(actionRoll);
   }
-  console.log(rollResultsList);
-  //The reduce() method reduces the array to a single value
-  totalSpan.innerHTML = rollResultsList.reduce((a, b) => a + b, 0);
   // Sum rolls into totalSpan
-  // if statement for manipulating innerHTML content
-});
+  // The reduce() method reduces the array to a single value
+  totalSpan.innerHTML = rollResultsList.reduce((a, b) => a + b, 0);
+}
 // Show Results of each Die Rolled
-resultsButton.addEventListener("click", function () {
+function showResults() {
   let listAppear = document.querySelector("#results");
   let rollList = document.createElement("ol");
   let index = 0;
@@ -49,6 +48,9 @@ resultsButton.addEventListener("click", function () {
   }
   listAppear.appendChild(rollList);
   console.log(rollList);
-});
+}
 // Figure out Resetting above list too, Removing the children
 // Reset Button Actions
+function resetApplet() {
+  rollResultsList = [];
+}
