@@ -1,14 +1,17 @@
 // User Data Input
+document.querySelector("#usr-num-dice").focus();
 const userNumDice = document.querySelector("#usr-num-dice");
 const userNumSides = document.querySelector("#usr-num-sides");
+// const userForm = document.querySelector("#diceRoller");
 // Results
 const totalSpan = document.querySelector("#die-faces-sum");
-// const rollResults = document.querySelector("#results");
 let rollResultsList = [];
+const listAppear = document.querySelector("#results");
+let rollList = document.createElement("ol");
 // Buttons
 // const rollButton = document.querySelector("#roll-button");
 // const resultsButton = document.querySelector("#results-button");
-// const resetButton = document.querySelector("#reset-button");
+const resetButton = document.querySelector("#reset-button");
 // ---FUNCTIONS---
 // Roll Dice
 function rollUpOffMe() {
@@ -20,7 +23,7 @@ function rollUpOffMe() {
   } else if (numDice === null && numSides === null) {
     window.alert("Please Enter a '#'");
   }
-  // Google for Testing for Numbers
+  // !Google for Testing for Numbers
   // let minSideValue = 1;
   while (incrementRoll < numDice) {
     incrementRoll++;
@@ -37,8 +40,6 @@ function rollUpOffMe() {
 }
 // Show Results of each Die Rolled
 function showResults() {
-  let listAppear = document.querySelector("#results");
-  let rollList = document.createElement("ol");
   let index = 0;
   while (index < rollResultsList.length) {
     let rollValue = document.createElement("li");
@@ -49,8 +50,14 @@ function showResults() {
   listAppear.appendChild(rollList);
   console.log(rollList);
 }
-// Figure out Resetting above list too, Removing the children
-// Reset Button Actions
+// ?Figure out Resetting above list too, Removing the children
+//TODO: Reset Button Actions
 function resetApplet() {
-  rollResultsList = [];
+  rollResultsList.splice(0, rollResultsList.length);
+  listAppear.removeChild(rollList);
+  userNumDice.value = "";
+  userNumSides.value = "";
+  totalSpan = totalSpan.innerHTML = "__";
+  //! focus on reset isn't working
+  document.querySelector("#usr-num-dice").focus();
 }

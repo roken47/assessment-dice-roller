@@ -19,6 +19,7 @@
         ><input
           class="user-input"
           id="usr-num-dice"
+          name="numdice"
           type="text"
           placeholder="# of dice"
         />
@@ -26,6 +27,7 @@
         ><input
           class="user-input"
           id="usr-num-sides"
+          name="numsides"
           type="text"
           placeholder="# of sides"
         />
@@ -39,9 +41,7 @@
       <section class="results">
         <button id="results-button" onclick="showResults()">
           Show All Rolls</button
-        ><button id="reset-button" ondblclick="resetApplet()">
-          Reset Applet
-        </button>
+        ><button id="reset-button" onclick="resetApplet()">Reset Applet</button>
         <div id="results"></div>
       </section>
     </main>
