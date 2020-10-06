@@ -31,7 +31,7 @@ function rollUpOffMe() {
       // minSideValue + Math.floor(Math.random() * (numSides - minSideValue + 1));
       1 + Math.floor(Math.random() * numSides);
     actionRoll;
-    console.log(actionRoll);
+    // console.log(actionRoll);
     rollResultsList.push(actionRoll);
   }
   // Sum rolls into totalSpan
@@ -48,7 +48,7 @@ function showResults() {
     index++;
   }
   listAppear.appendChild(rollList);
-  console.log(rollList);
+  // console.log(rollList);
   // rollResultsList.length = 0;
 }
 // ?Figure out Resetting above list too, Removing the children
@@ -57,12 +57,15 @@ function resetApplet() {
   //! Bug: showResults() still has [] saved, but at least doesn't duplicate list indefinitely by clickiing it endlessly.
   //! Tested more, Returned [] with additional rolls. Tried 1 Die and after reset 5 Die, Array returned with 6 entries.
   rollResultsList.length = 0;
-  // rollResultsList.splice(0, rollResultsList.length);
-  listAppear.removeChild(rollList);
+  // console.log(rollResultsList);
+  // rollResultsList.splice(0, rollResultsList.length); // this works too
+  // listAppear.removeChild(rollList); // this works just as well as listAppear.innerHTML = ""
+  listAppear.innerHTML = "";
+  rollList.innerHTML = "";
   userNumDice.value = "";
   userNumSides.value = "";
   totalSpan.innerHTML = "__";
   //! focus on reset isn't working
   document.querySelector("#usr-num-dice").autofocus = true;
 }
-// https://medium.com/@naveenkarippai/learning-how-references-work-in-javascript-a066a4e15600
+//?Byron: https://medium.com/@naveenkarippai/learning-how-references-work-in-javascript-a066a4e15600
