@@ -49,15 +49,20 @@ function showResults() {
   }
   listAppear.appendChild(rollList);
   console.log(rollList);
+  // rollResultsList.length = 0;
 }
 // ?Figure out Resetting above list too, Removing the children
 //TODO: Reset Button Actions
 function resetApplet() {
-  rollResultsList.splice(0, rollResultsList.length);
+  //! Bug: showResults() still has [] saved, but at least doesn't duplicate list indefinitely by clickiing it endlessly.
+  //! Tested more, Returned [] with additional rolls. Tried 1 Die and after reset 5 Die, Array returned with 6 entries.
+  rollResultsList.length = 0;
+  // rollResultsList.splice(0, rollResultsList.length);
   listAppear.removeChild(rollList);
   userNumDice.value = "";
   userNumSides.value = "";
-  totalSpan = totalSpan.innerHTML = "__";
+  totalSpan.innerHTML = "__";
   //! focus on reset isn't working
-  document.querySelector("#usr-num-dice").focus();
+  document.querySelector("#usr-num-dice").autofocus = true;
 }
+// https://medium.com/@naveenkarippai/learning-how-references-work-in-javascript-a066a4e15600
